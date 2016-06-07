@@ -1,3 +1,25 @@
 <h2 id="title">Welcome to Ember</h2>
+{{#each model as |item i|}}
+  {{#link-to 'me'}}ME{{/link-to}}
+  {{#each item as |inner j|}}
+    {{#if inner.bloop}}
+      {{#each inner.bloop}}
+        {{fizz-bar}}
+      {{/each}}
+    {{/if}}
 
-{{outlet}}
+    {{foo-bar id=(concat "hey" i j)}}
+
+    {{#if inner.isVideo}}
+      {{my-video}}
+      {{#link-to 'search' (query-params someProp='foo')}}SEARCH{{/link-to}}
+    {{/if}}
+
+    {{#if inner.isShare}}
+      {{#link-to 'profile' j}}PROFILE{{/link-to}}
+      {{a-c}}
+    {{/if}}
+
+  {{/each}}
+{{/each}}
+
